@@ -1,9 +1,9 @@
 function Form() {
 
     return(
-        <h1>
-            Formulario
-        </h1>
+        <div>
+            <h2>Formulario</h2>
+        </div>
     )
 }
 

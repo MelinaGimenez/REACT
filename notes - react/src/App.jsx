@@ -6,11 +6,11 @@ import PatientList from './components/PatientList';
 function App() {
 
   return (
-    <>
+    <div className=''>
     <Header />
     <Form />
     <PatientList />
-    </>
+    </div>
   );
 }
 
