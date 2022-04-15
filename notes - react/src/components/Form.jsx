@@ -1,17 +1,17 @@
 function Form() {
 
     return(
-        <div className="md:w-1/2 lg:w-2/5">
-            <h2 className="font-black text-3xl text-center">
+        <div className="md:w-2/3 lg:w-2/5 text-center m-3 ">
+            <h2 className="font-black text-3xl text-center mt-10">
                 Seguimiento Pacientes
             </h2>
-            <p className="text-lg mt-5 text-center mb-10">
+            <p className="text-xl mt-5 mb-10 text-center">
                 Añade Pacientes y {''}
                 <span className="text-indigo-600 font-bold">
                     Administralos
                 </span>
             </p>
-            <form className="bg-white shadow-md rounded-lg py-10 px-5">
+            <form className="bg-white shadow-md rounded-lg py-10 px-5 border-dashed border-2 border-indigo-300">
                 <div className="mb-5">
                     <label htmlFor="pet" className="block text-gray-700 uppercase font-bold">
                         Nombre Mascota
