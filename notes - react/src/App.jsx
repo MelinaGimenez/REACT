@@ -1,9 +1,11 @@
-import { useState } from 'react'
 import Header from './components/Header';
 import Form from './components/Form';
 import PatientList from './components/PatientList';
+import { useState } from 'react';
 
 function App() {
+
+  const [ consultant, setConsultant ] = useState([]);
 
   return (
 
@@ -12,7 +14,10 @@ function App() {
     <Header />
 
       <div className='mt-12 md:flex md:w-full'>
-        <Form />
+        <Form 
+          consultant={consultant}
+          setConsultant={setConsultant}
+        />
         <PatientList />
       </div>
 

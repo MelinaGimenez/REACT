@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-function Form() {
+function Form({consultant, setConsultant}) {
 
     //Valores originales de los campos
 
@@ -19,13 +19,28 @@ function Form() {
     const handleSubmit = (e) => {
         
         e.preventDefault();
-
         if( [pet, owner, email, date, symptoms].includes('')){
             console.log('Atención: Campos Vacíos')
             setError(true)
         }else{
             setError(false)
         }
+
+        const objectPatient = {
+            pet, owner, email, date, symptoms
+        }
+
+        // Props de App.jsx, guarda datos form
+
+        setConsultant([...consultant, objectPatient]);
+
+        // Reiniciar form despues de enviar datos
+
+        setPet('')
+        setOwner('')
+        setEmail('')
+        setDate('')
+        setSymptoms('')
 
     } 
 
