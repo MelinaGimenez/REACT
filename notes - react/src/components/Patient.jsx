@@ -1,21 +1,36 @@
-export const Patient = () => {
+export const Patient = ({consultant}) => {
+
+    const {pet, owner, email, date, symptoms} = consultant
+
   return (
     <div className="m-3 text-center bg-white shadow-md px-5 py-10 rounded-xl border-dashed border-2 border-indigo-300">
         <p className="font-bold mb-3 text-gray-700 uppercase">Nombre: {''}
-            <span className="font-normal normal-case">Hook</span>
+            <span className="font-normal normal-case">{pet}</span>
         </p>
         <p className="font-bold mb-3 text-gray-700 uppercase">Propietario: {''}
-            <span className="font-normal normal-case">Juan</span>
+            <span className="font-normal normal-case">{owner}</span>
         </p>
         <p className="font-bold mb-3 text-gray-700 uppercase">Email: {''}
-            <span className="font-normal normal-case">correo@correo.com</span>
+            <span className="font-normal normal-case">{email}</span>
         </p>
         <p className="font-bold mb-3 text-gray-700 uppercase">Fecha Alta: {''}
-            <span className="font-normal normal-case">10 diciembre 2022</span>
+            <span className="font-normal normal-case">{date}</span>
         </p>
         <p className="font-bold mb-3 text-gray-700 uppercase">Sintomas: {''}
-            <span className="font-normal normal-case">Pasaron cosas</span>
+            <span className="font-normal normal-case">{symptoms}</span>
         </p>
+        <div className="flex justify-around mt-10">
+            <button 
+                type="button"
+                className="py-2 px-10 bg-indigo-600 hover:bg-indigo-700 text-white font-bold uppercase rounded-lg"
+                >Editar
+                </button>
+            <button
+                type="button"
+                className="py-2 px-10 bg-red-600 hover:bg-red-700 text-white font-bold uppercase rounded-lg"
+                >Eliminar
+                </button>
+        </div>
     </div>
   )
 }

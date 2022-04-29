@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import Error from './Error';
 
 function Form({consultant, setConsultant}) {
 
@@ -14,6 +15,15 @@ function Form({consultant, setConsultant}) {
 
     const [error, setError] = useState(false)
 
+    //Funcion para generar Id único
+
+    const createId = () => {
+        const random = Math.random().toString(36).substr(2);
+        const date = Date.now().toString(36)
+
+        return random + date
+    }
+
     //Validación del formulario
 
     const handleSubmit = (e) => {
@@ -27,7 +37,7 @@ function Form({consultant, setConsultant}) {
         }
 
         const objectPatient = {
-            pet, owner, email, date, symptoms
+            pet, owner, email, date, symptoms, id: createId()
         }
 
         // Props de App.jsx, guarda datos form
@@ -60,11 +70,7 @@ function Form({consultant, setConsultant}) {
             <form 
                 onSubmit={handleSubmit}
                 className="bg-white shadow-md rounded-lg py-10 px-5 border-dashed border-2 border-indigo-300">
-                { error && 
-                (<div className='bg-red-800 text-white text-center p-3 font-bold mb-10 rounded-md'>
-                    <p>Debes llenar todos los campos</p>
-                </div>)
-                }
+                { error && <Error><p>Todos los campos son obligatorios</p></Error>}
                 <div className="mb-5">
                     <label htmlFor="pet" className="block text-gray-700 uppercase font-bold">
                         Nombre Mascota
@@ -131,7 +137,7 @@ function Form({consultant, setConsultant}) {
                 </div>
                 <input 
                     type="submit"
-                    className="bg-indigo-600 w-full p-3 text-white uppercase font-bold hover:bg-indigo-700 cursor-pointer transition-colors"
+                    className="bg-indigo-600 w-full p-3 text-white uppercase font-bold hover:bg-indigo-700 cursor-pointer transition-colors rounded-lg"
                     value="Agregar Paciente"
                 />
             </form>
