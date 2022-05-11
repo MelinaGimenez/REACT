@@ -6,6 +6,7 @@ import { useState } from 'react';
 function App() {
 
   const [ consultant, setConsultant ] = useState([]);
+  const [ file, setFile ] = useState({});
 
   return (
 
@@ -17,9 +18,12 @@ function App() {
         <Form 
           consultant={consultant}
           setConsultant={setConsultant}
+          file={file}
+          setFile={setFile}
         />
         <PatientList 
           consultant={consultant}
+          setFile={setFile}
         />
       </div>
 

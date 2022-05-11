@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import Error from './Error';
 
-function Form({consultant, setConsultant}) {
+function Form({consultant, setConsultant, file, setFile}) {
 
     //Valores originales de los campos
 
@@ -14,6 +14,16 @@ function Form({consultant, setConsultant}) {
     //Errores
 
     const [error, setError] = useState(false)
+
+    useEffect(() => {
+        if(Object.keys(file).length > 0 ){
+            setPet(file.owner)
+            setOwner(file.pet)
+            setEmail(file.email)
+            setDate(file.date)
+            setSymptoms(file.symptoms)
+        }
+    }, [file])
 
     //Funcion para generar Id único
 
@@ -37,12 +47,26 @@ function Form({consultant, setConsultant}) {
         }
 
         const objectPatient = {
-            pet, owner, email, date, symptoms, id: createId()
+            pet, owner, email, date, symptoms
         }
 
-        // Props de App.jsx, guarda datos form
+        //editar si existe id o crear nuevo registro
 
-        setConsultant([...consultant, objectPatient]);
+        if(file.id) {
+            //mantiene id, busca mismo id entre registros, sobreescribe anterior, limpia
+            objectPatient.id = file.id
+            const fileUpdate = consultant.map ( fileState => fileState.id === file.id ? objectPatient : fileState )
+            setConsultant(fileUpdate)
+            setFile({})
+        }else{
+            // Props de App.jsx, guarda datos form; agrega id
+            setConsultant([...consultant, objectPatient]);
+            objectPatient.id = createId();
+        }
+
+
+
+        
 
         // Reiniciar form despues de enviar datos
 
@@ -138,7 +162,7 @@ function Form({consultant, setConsultant}) {
                 <input 
                     type="submit"
                     className="bg-indigo-600 w-full p-3 text-white uppercase font-bold hover:bg-indigo-700 cursor-pointer transition-colors rounded-lg"
-                    value="Agregar Paciente"
+                    value= {file.id ? 'Editar Paciente' : 'Agregar Paciente' }
                 />
             </form>
         </div>

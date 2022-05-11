@@ -1,4 +1,4 @@
-export const Patient = ({consultant}) => {
+export const Patient = ({consultant, setFile}) => {
 
     const {pet, owner, email, date, symptoms} = consultant
 
@@ -23,6 +23,7 @@ export const Patient = ({consultant}) => {
             <button 
                 type="button"
                 className="py-2 px-10 bg-indigo-600 hover:bg-indigo-700 text-white font-bold uppercase rounded-lg"
+                onClick={() => setFile(consultant)}
                 >Editar
                 </button>
             <button
