@@ -28,7 +28,7 @@ const PatientList= ({consultant, setFile, deletePatient}) => {
                 <>
                     <h2 className="font-black text-3xl text-center mt-10">Sin Pacientes Nuevos</h2>
                     <p className="text-xl mt-5 mb-10 text-center">
-                        Comeinza Agregando {''}
+                        Comienza Agregando {''}
                         <span className="text-indigo-600 font-bold">Nuevos Pacientes</span>
                     </p>
                 </>
