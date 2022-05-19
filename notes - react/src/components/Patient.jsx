@@ -1,6 +1,6 @@
-export const Patient = ({consultant, setFile}) => {
+export const Patient = ({consultant, setFile, deletePatient}) => {
 
-    const {pet, owner, email, date, symptoms} = consultant
+    const {pet, owner, email, date, symptoms, id} = consultant
 
   return (
     <div className="m-3 text-center bg-white shadow-md px-5 py-10 rounded-xl border-dashed border-2 border-indigo-300">
@@ -29,6 +29,7 @@ export const Patient = ({consultant, setFile}) => {
             <button
                 type="button"
                 className="py-2 px-10 bg-red-600 hover:bg-red-700 text-white font-bold uppercase rounded-lg"
+                onClick={() => deletePatient(id)}
                 >Eliminar
                 </button>
         </div>

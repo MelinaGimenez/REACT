@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { Patient } from "./Patient"
 
-const PatientList= ({consultant, setFile}) => {
+const PatientList= ({consultant, setFile, deletePatient}) => {
 
     return(
         <div className="md:w-1/2 lg:w-3/5">
@@ -19,6 +19,7 @@ const PatientList= ({consultant, setFile}) => {
                             key={consultant.id}
                             consultant={consultant}
                             setFile={setFile}
+                            deletePatient={deletePatient}
                             />
                         ))}
                     </div>

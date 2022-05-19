@@ -1,12 +1,35 @@
 import Header from './components/Header';
 import Form from './components/Form';
 import PatientList from './components/PatientList';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function App() {
 
   const [ consultant, setConsultant ] = useState([]);
   const [ file, setFile ] = useState({});
+
+  //obtener lo que haya en Local Storage
+
+  useEffect(() => {
+    const getLS = () => {
+      const consultantLS = JSON.parse(localStorage.getItem('consultant')) ?? [];
+      setConsultant(consultantLS)
+    }
+    getLS();
+  }, [])
+
+  //guardar datos en Local Storage
+
+  useEffect(() => {
+    localStorage.setItem('consultant', JSON.stringify(consultant))
+  }, [consultant])
+
+  //borrar caso
+
+  const deletePatient = id => {
+    const updatePatient = consultant.filter( file => file.id !== id );
+    setConsultant(updatePatient)
+  }
 
   return (
 
@@ -24,6 +47,7 @@ function App() {
         <PatientList 
           consultant={consultant}
           setFile={setFile}
+          deletePatient={deletePatient}
         />
       </div>
 
