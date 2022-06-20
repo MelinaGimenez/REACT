@@ -1,20 +1,34 @@
-import React from 'react'
+import { useState } from 'react'
+import Message from './Message'
 
-const NewBudget = ({estimate, setEstimate}) => {
+const NewBudget = ({budget, setBudget}) => {
+
+  const [ message, setMessage ] = useState('')
+
+  const handleBudget = (e) => {
+    e.preventDefault();
+    if(!Number(budget) || Number(budget) < 0){
+        setMessage('No es un presupuesto válido')
+    }else{
+        setMessage('Si es un presupuesto válido')
+    }
+  }
+
   return (
     <div className='container-budget container shadow'>
-        <form className='form'>
+        <form onSubmit={handleBudget} className='form'>
             <div className='camp'>
                 <label>Definir Presupuesto</label>
                 <input
                     className='new-budget' 
                     type="text"
                     placeholder='Añade tu Presupuesto'
-                    value= { estimate }
-                    onChange= { e => setEstimate(e.target.value) }
+                    value= { budget }
+                    onChange= { e => setBudget(e.target.value) }
                 />
             </div>
             <input type="submit" value="Añadir" />
+            {<Message tipe='error'>{message}</Message> }
         </form>
     </div>
   )

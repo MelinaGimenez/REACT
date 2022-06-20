@@ -3,13 +3,13 @@ import Header from './components/Header'
 
 function App() {
 
-  const [ estimate, setEstimate ] = useState(0);
+  const [ budget, setBudget ] = useState(0);
 
   return (  
     <div>
       <Header 
-        estimate = { estimate }
-        setEstimate = { setEstimate }
+        budget = { budget }
+        setBudget = { setBudget }
       />
     </div>
   )
