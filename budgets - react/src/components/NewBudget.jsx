@@ -1,6 +1,6 @@
 import React from 'react'
 
-const NewBudget = ( budget, setBudget ) => {
+const NewBudget = ({estimate, setEstimate}) => {
   return (
     <div className='container-budget container shadow'>
         <form className='form'>
@@ -10,8 +10,8 @@ const NewBudget = ( budget, setBudget ) => {
                     className='new-budget' 
                     type="text"
                     placeholder='Añade tu Presupuesto'
-                    value= { budget.budget.budget }
-                    onChange= { e => setBudget(e.target.value) }
+                    value= { estimate }
+                    onChange= { e => setEstimate(e.target.value) }
                 />
             </div>
             <input type="submit" value="Añadir" />

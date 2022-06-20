@@ -1,15 +1,15 @@
 import { useState } from 'react'
-import Header from '../components/Header'
+import Header from './components/Header'
 
 function App() {
 
-  const [ budget, setBudget ] = useState(0);
+  const [ estimate, setEstimate ] = useState(0);
 
   return (  
     <div>
       <Header 
-        budget = { budget }
-        setBudget = { setBudget }
+        estimate = { estimate }
+        setEstimate = { setEstimate }
       />
     </div>
   )
